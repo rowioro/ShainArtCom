@@ -1,0 +1,89 @@
+﻿@model IEnumerable<ShainArtCom.Models.Art>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<p>
+    <a style="color: rgb(155,55,55)" asp-action="Create">Create New Art</a>
+</p>
+<table class="table-striped table-responsive">
+
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Artist)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Year)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Subject)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Dimensions)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PictureUrl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PictureMinUrl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ArtOfWeek)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Artist)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Year)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Subject)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Dimensions)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PictureUrl)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PictureMinUrl)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ArtOfWeek)
+                </td>
+                <td>
+                    <a style="color: rgb(155,55,55)" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                    <a style="color: rgb(155,55,55)" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                    <a style="color: rgb(155,55,55)" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

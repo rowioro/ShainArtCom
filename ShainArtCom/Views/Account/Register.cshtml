@@ -1,0 +1,34 @@
+﻿@model LoginVM
+
+<div class="body-content">
+    <h2>
+        Before You leave a comment,<br />
+        please register or
+        <a class="nav-link" asp-action="Login" asp-controller="Account">log in!</a>
+    </h2>
+
+    <form asp-action="Register" asp-controller="Account" method="post" class="form-horizontal" role="form">
+
+        <div class="form-group">
+            <label asp-for="UserName" class="col-md-6 control-label"></label>
+            <div class="col-md-12">
+                <input asp-for="UserName" class="form-control" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Password" class="col-md-6 control-label"></label>
+            <div class="col-md-12">
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-6 col-md-12">
+                <input type="submit" class="btn btn-primary" value="Register" />
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,67 @@
+﻿@using Microsoft.AspNetCore.Identity
+<!DOCTYPE html>
+@inject SignInManager<IdentityUser> SignInManager
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <link href="~/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/content/StyleSheet.css" rel="stylesheet" />
+
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-dark navbar-expand-md" style="background-color:black;">
+            <a class="navbar-brand" asp-controller="Home" asp-action="Index" style="color:rgb(155,55,55); font-weight:bold;"> ShainArt.com </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainmenu" aria-controls="mainmenu" aria-expand="false" aria-label="Przelacznik nawigacji">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="mainmenu">
+                <ol class="navbar-nav mr-auto">
+                    <li><a class="nav-link" asp-controller="Home" asp-action="Index"> ARTS </a></li>
+                    <li><a class="nav-link" asp-controller="Home" asp-action="About"> About </a></li>
+                    <li><a class="nav-link" asp-controller="Comment" asp-action="Index"> Comment </a></li>
+                </ol>
+
+                @if (SignInManager.IsSignedIn(User))
+                {
+                    <form asp-area="" asp-controller="Account" asp-action="Logout" id="logoutForm" method="post" class="navbar-right">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a class="nav-link" href="javascript:document.getElementById('logoutForm').submit()"> Log out </a></li>
+                        </ul>
+                    </form> }
+                else
+                {
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a class="nav-link" id="registerLink" asp-controller="Account" asp-action="Register"> Registration </a></li>
+                        <li><a class="nav-link" id="loginLink" asp-controller="Account" asp-action="Login"> Log in </a></li>
+                    </ul>
+                }
+
+            </div>
+        </nav>
+    </header>
+
+    <div class="container body-content">
+        <div class="row">
+            @RenderBody()
+        </div>
+
+    </div>
+    <footer>
+        <div class="stopka">
+            Robert Stefaniak - Nr albumu: 295983 &copy; 2020
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+
+    <script src="~/js/bootstrap.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+﻿@model Comment
+
+<div class="body-content">
+
+    <h3>
+        Leave a comment about
+    </h3>
+
+    <form asp-action="Index" method="post" class="form-horizontal" role="form">
+
+        <div class="form-group">
+            <label asp-for="ArtId" class="control-label">this Art.</label>
+            <select asp-for="ArtId" class="form-control" asp-items="ViewBag.ArtId"></select>
+        </div>
+
+        <!--<div class="form-group" style="margin-top:50px;">
+            <label asp-for="Username" class="col-md-6 control-label"></label>
+            <div class="col-md-12">
+                <input asp-for="Username" class="form-control" />
+                <span asp-validation-for="Username" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Email" class="col-md-6 control-label"></label>
+            <div class="col-md-12">
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+        </div>-->
+
+        <div class="form-group">
+            <label asp-for="Message" class="col-md-6 control-label"></label>
+            <div class="col-md-12">
+                <textarea asp-for="Message" class="form-control" rows="8" cols="50"></textarea>
+                <span asp-validation-for="Message" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-6 col-md-12">
+                <input type="submit" class="btn btn-primary" value="Send" />
+            </div>
+        </div>
+
+    </form>
+</div>

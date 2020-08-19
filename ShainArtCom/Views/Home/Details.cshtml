@@ -1,0 +1,18 @@
+﻿@model Art
+
+<div class="thumbnail">
+    <img src="@Model.PictureUrl" alt="@Model.Title" />
+    <div class="caption-full">
+        <h6 style="margin-top:30px;"> Price: @Model.Price.ToString("c")</h6>
+        <h3 style="font-weight:bold;">@Model.Title</h3>
+        <h5> Artist: <span style="font-weight:bold;"> @Model.Artist </span></h5>
+        <h5> Year: @Model.Year</h5>
+        <h5> Subject: @Model.Subject</h5>
+        <h5> Dimensions: @Model.Dimensions</h5>
+        <p>@Model.Description</p>
+        <p style="font-weight:600;">
+            <a style="color: rgb(155,55,55);" asp-controller="Comment" asp-action="Index"> Add comment </a>
+        </p>
+    </div>
+</div>
+

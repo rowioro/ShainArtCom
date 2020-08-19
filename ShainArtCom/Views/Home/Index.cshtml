@@ -1,0 +1,40 @@
+﻿@model HomeViewModel
+
+
+@foreach (var art in Model.Arts)
+{
+    <div class="col-sm-6 col-lg-4 col-md-6">
+        <div class="thumbnail2">
+            <img src="@art.PictureMinUrl" alt="" />
+            <div class="caption">
+                <h6>
+                    @art.Price.ToString("c")
+                </h6>
+                <h4 style="font-weight:600;">
+                    <a asp-controller="Home" asp-action="Details" asp-route-id="@art.Id"> @art.Title </a>
+                </h4>
+                <h5>
+                    Artist: <span style="font-weight:bold;"> @art.Artist </span>
+                </h5>
+                <h5>
+                    Year: @art.Year
+                </h5>
+                <h5>
+                    Subject: @art.Subject
+                </h5>
+                <h5>
+                    Dimensions: @art.Dimensions
+                </h5>
+                <p>
+                    @art.Description
+                </p>
+                <p style="font-weight:600;">
+                    <a style="color: rgb(155,55,55);" asp-controller="Comment" asp-action="Index" asp-route-id="@art.Id"> Add comment </a>
+                </p>
+            </div>
+        </div>
+    </div>
+}
+
+
+
