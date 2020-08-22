@@ -7,6 +7,7 @@ namespace ShainArtCom.ViewModels
         [Required]
         [Display(Name = "Username")]
         public string UserName { get; set; }
+
         [Required]
         [Display(Name = "Password")]
         [DataType(DataType.Password)]

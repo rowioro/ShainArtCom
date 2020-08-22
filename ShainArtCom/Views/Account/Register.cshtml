@@ -1,4 +1,4 @@
-﻿@model LoginVM
+﻿@model RegisterVM
 
 <div class="body-content">
     <h2>
@@ -8,6 +8,8 @@
     </h2>
 
     <form asp-action="Register" asp-controller="Account" method="post" class="form-horizontal" role="form">
+
+        <div asp-validation-summary="All" class="text-danger"></div>
 
         <div class="form-group">
             <label asp-for="UserName" class="col-md-6 control-label"></label>
@@ -22,6 +24,22 @@
             <div class="col-md-12">
                 <input asp-for="Password" class="form-control" />
                 <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Email" class="col-md-6 control-label"></label>
+            <div class="col-md-12">
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="ConfirmEmail" class="col-md-6 control-label"></label>
+            <div class="col-md-12">
+                <input asp-for="ConfirmEmail" class="form-control" />
+                <span asp-validation-for="ConfirmEmail" class="text-danger"></span>
             </div>
         </div>
 

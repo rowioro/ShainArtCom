@@ -25,26 +25,27 @@ namespace ShainArtCom.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(LoginVM loginVM)
         {
-            if (!ModelState.IsValid)
-                return View(loginVM);
-
-            var user = await _userManager.FindByNameAsync(loginVM.UserName);
-
-            if (loginVM.UserName == "rowioro" && loginVM.Password == "Robert260471*")
+            if (ModelState.IsValid)
             {
-                var result = await _signInManager.PasswordSignInAsync(user, loginVM.Password, false, false);
-                if (result.Succeeded)
+
+                var user = await _userManager.FindByNameAsync(loginVM.UserName);
+
+                if (loginVM.UserName == "rowioro" && loginVM.Password == "Robert260471*")
                 {
-                    return RedirectToAction("Index", "Arts");
+                    var result = await _signInManager.PasswordSignInAsync(user, loginVM.Password, false, false);
+                    if (result.Succeeded)
+                    {
+                        return RedirectToAction("Index", "Arts");
+                    }
                 }
-            }
 
-            if (user != null)
-            {
-                var result = await _signInManager.PasswordSignInAsync(user, loginVM.Password, false, false);
-                if (result.Succeeded)
+                if (user != null)
                 {
-                    return RedirectToAction("Index", "Home");
+                    var result = await _signInManager.PasswordSignInAsync(user, loginVM.Password, false, false);
+                    if (result.Succeeded)
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
                 }
             }
 
@@ -56,24 +57,29 @@ namespace ShainArtCom.Controllers
         // GET: /<controller>/
         public IActionResult Register()
         {
-            return View(new LoginVM());
+            return View(new RegisterVM());
         }
 
         [HttpPost]
-        public async Task<IActionResult> Register(LoginVM loginVM)
+        public async Task<IActionResult> Register(RegisterVM registerVM)
         {
             if (ModelState.IsValid)
             {
-                var user = new IdentityUser() { UserName = loginVM.UserName };
-                var result = await _userManager.CreateAsync(user, loginVM.Password);
-
-                if (result.Succeeded)
+                if (registerVM.Email == registerVM.ConfirmEmail)
                 {
-                    return RedirectToAction("Index", "Home");
+                    var user = new IdentityUser() { UserName = registerVM.UserName, Email = registerVM.Email};
+                    var result = await _userManager.CreateAsync(user, registerVM.Password);
+
+                    if (result.Succeeded)
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
                 }
             }
 
-            return View(loginVM);
+            ModelState.AddModelError("", "Form requires password with 8 signs (digit-, uppercase-, lowercase-, special charakter) and confirmed email");
+
+            return View(new RegisterVM());
         }
 
         [HttpPost]
